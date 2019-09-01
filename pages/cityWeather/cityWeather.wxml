@@ -1,0 +1,35 @@
+<view class="wrapper">
+    <view class="weather">
+        <view class="temperature">{{ cityWeatherInfo.wendu ? cityWeatherInfo.wendu + "℃" : 0 + "℃" }} </view>
+        <view class="GPS">
+            <text class="local" bind:tap="selectCity">{{ curCity ? curCity : "地点" }}</text>
+            <text class="time">{{ time }}</text>
+        </view>
+        <view class="ganmao">
+            <text class="title">温馨提示：</text>
+            <text>{{ cityWeatherInfo.ganmao }}</text> 
+        </view>
+        <view class="selectBox">
+            <button bind:tap="selectFuture">未来5天</button>
+            <button bind:tap="selectYesterday">上一天</button>
+        </view>
+        <view class="futureDay">
+            <view wx:if="{{ selectStatus }}"
+                  class="futureDay_item"
+                  wx:for="{{ cityWeatherInfo.forecast }}"
+                  wx:key="{{ index }}">
+                <view class="title">{{ item.date }}</view>
+                <view class="info">{{ "温度：" + item.low + " ~ " + item.high }}</view>
+                <view class="info">{{ "风力：" + item.fengli }}</view>
+                <view class="info">{{ "风向：" + item.fengxiang }}</view>
+            </view>  
+            <view wx:if="{{ !selectStatus }}"
+                  class="yesterday">
+                <view class="title">{{ cityWeatherInfo.yesterday.date + " " + cityWeatherInfo.yesterday.type }}</view>
+                <view class="info">{{ "风力：" + cityWeatherInfo.yesterday.fl }}</view>
+                <view class="info">{{ "风向：" + cityWeatherInfo.yesterday.fx }}</view>
+                <view class="info">{{ "温度：" + cityWeatherInfo.yesterday.low + " ~ " + cityWeatherInfo.yesterday.high }}</view>      
+            </view>  
+        </view>
+    </view>
+</view>

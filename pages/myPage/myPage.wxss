@@ -1,0 +1,19 @@
+/* pages/myPage/myPage.wxss */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 20rpx;
+}
+
+.user_box {
+    align-self: center;
+}
+.user_box image {
+    width: 300rpx;
+    height: 300rpx;
+    border-radius: 50%;
+    border: 1px solid rgb(54, 153, 184);
+}
+.content{ 
+    align-self: center;
+}

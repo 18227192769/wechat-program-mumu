@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="wrapper">
+        <view class="comImg">
+            <image src="{{ userImage }}" />
+        </view>
+        <text class="title">{{ title }}</text>
+    </view>
+    <view class="search_module">
+        <view class="searchInpBox">
+            <input type="text" 
+                   placeholder="请输入快递单号" 
+                   class="searchInp"
+                   bind:change="setOderID" 
+                   value="{{ oderID }}" />
+            <image class="scanCode" src="/image/scanCode.png" bind:tap="getScanCode" />
+        </view>
+        <button bind:tap="alertInfo" class="searchBtn" bind:tap="getData">查询</button>
+    </view>
+    <view class="curExpress">
+        <image src="{{ curExpress.comImg }}" />
+        <text>{{ curExpress.name }}</text>
+    </view>
+    <view class="traces_view">
+        <view wx:for="{{ traces }}" wx:key="{{ index }}" class="traces_item">
+            <icon type="success" size="12" />
+            <text >{{ item.AcceptStation }}</text>
+            <text >{{ item.AcceptTime }}</text>
+        </view>
+    </view>
+</view>

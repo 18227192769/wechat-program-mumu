@@ -1,0 +1,15 @@
+<view class="wrapper">
+    <view class="provinceItem"
+          wx:for="{{ list }}"
+          wx:key="{{ index }}">
+        <view class="provinceName" data-index="{{ index }}" bind:tap="click_province">{{ item.name }}</view>
+        <view class="city" wx:if="{{ item.open }}">
+            <view class="cityItem"
+                  wx:for="{{ item.citys }}"
+                  wx:for-item="city"
+                  wx:key="{{ index }}"
+                  data-city="{{ city }}"
+                  bind:tap="toCityPage">{{ city }}</view>
+        </view>
+    </view>
+</view>

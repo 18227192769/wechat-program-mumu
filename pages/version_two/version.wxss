@@ -1,0 +1,94 @@
+/* pages/version_two/version.wxss */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.comImg {
+    align-self: center;
+}
+.comImg image {
+    width: 300rpx;
+    height: 300rpx;
+    border-radius: 50%;
+    border: 6rpx solid rgb(148, 211, 206);
+    margin-top: 20rpx;
+    
+}
+.wrapper .title {
+    align-self: center;
+    font-size: 32rpx;
+    margin-top: 20rpx;
+    color: rgb(80, 80, 80);
+}
+
+.search_module {
+    display: flex;
+    padding: 20rpx;
+}
+.search_module .searchInp {
+    width: 500rpx;
+    height: 80rpx;
+    border: 4rpx solid rgb(105, 183, 219);
+    padding-left: 10rpx;
+    border-radius: 10px;
+}
+.search_module .searchBtn {
+    width: 190rpx;
+    height: 86rpx;
+    background-image: linear-gradient(to right, rgb(123, 203, 207) 0%, rgb(75, 181, 189) 100%);
+    color: #fff;
+    font-size: 34rpx;
+    line-height: 86rpx;
+}
+
+.selectBox {
+    width: 710rpx;
+    height: 80rpx;
+    background-image: linear-gradient(to left, rgb(138, 201, 204) 0%, rgb(52, 183, 192) 100%);
+    border-radius: 10rpx;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 34rpx;
+    color: #fff;
+}
+
+.searchInpBox {
+    position: relative;
+}
+.searchInpBox .scanCode {
+    position: absolute;
+    right: 20rpx;
+    top: 19rpx;
+    width: 60rpx;
+    height: 50rpx;
+    z-index: 1000;
+} 
+
+.traces_view {
+    padding: 20rpx;
+}
+.traces_item {
+    background-color: rgb(232, 240, 241);
+    font-size: 26rpx;
+    border-radius: 20rpx;
+    padding: 15rpx;
+    margin: 10rpx 0;
+    box-sizing: border-box
+}
+.curExpress {
+    height: 150rpx;
+    line-height: 150rpx;
+    padding: 10rpx 20rpx;
+}
+.curExpress image {
+    width: 150rpx;
+    height: 150rpx;
+    vertical-align: middle;
+}
+.curExpress text {
+    display: inline-block;
+    height: 150rpx;
+    line-height: 150rpx;
+    margin-left: 20rpx;
+}

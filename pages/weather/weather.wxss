@@ -1,0 +1,25 @@
+/* pages/weather/weather.wxss */
+.wrapper {
+    background-color: #eee;
+    padding: 20rpx;
+}
+
+.wrapper .provinceItem {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20rpx;
+    font-size: 32rpx;
+    margin-top: 10rpx;
+    border-radius: 20rpx;
+}
+
+.city {
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+}
+
+.cityItem {
+    padding: 10rpx;
+    box-sizing: border-box;
+    border-bottom: 2rpx solid rgb(189, 189, 189);
+}

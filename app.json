@@ -1,0 +1,33 @@
+{
+    "pages": [  
+        "pages/cityWeather/cityWeather",
+        "pages/weather/weather",         
+        "pages/firstPage/firstPage",
+        "pages/version_one/test",
+        "pages/myPage/myPage",
+        "pages/version_two/version"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#66B3FF",
+        "navigationBarTitleText": "云创查快递",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/version_one/test",
+                "text": "查快递",
+                "iconPath": "/image/01.png",
+                "selectedIconPath": "/image/01.png"
+            },
+            {
+                "pagePath": "pages/myPage/myPage",
+                "text": "我的",
+                "iconPath": "/image/user.png",
+                "selectedIconPath": "/image/user_selected.png"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
+}

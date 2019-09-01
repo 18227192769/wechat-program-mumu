@@ -1,0 +1,9 @@
+<!--pages/myPage/myPage.wxml-->
+<view class="wrapper">
+    <view class="user_box">
+        <image src="{{ userInfo.avatarUrl }}" />
+    </view>
+    <view class="content">
+        <text >hello world! {{ userInfo.nickName }}</text>
+    </view>
+</view>
