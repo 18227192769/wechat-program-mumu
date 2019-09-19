@@ -1,11 +1,11 @@
 {
-    "pages": [  
-        "pages/cityWeather/cityWeather",
-        "pages/weather/weather",         
-        "pages/firstPage/firstPage",
+    "pages": [
         "pages/version_one/test",
-        "pages/myPage/myPage",
-        "pages/version_two/version"
+        "pages/weather/weather",       
+        "pages/version_two/version",
+        "pages/cityWeather/cityWeather",
+        "pages/firstPage/firstPage",
+        "pages/myPage/myPage"
     ],
     "window": {
         "backgroundTextStyle": "dark",
@@ -22,12 +22,29 @@
                 "selectedIconPath": "/image/01.png"
             },
             {
+                "pagePath": "pages/version_two/version",
+                "text": "智能查询",
+                "iconPath": "/image/01.png",
+                "selectedIconPath": "/image/01.png"
+            },
+            {
+                "pagePath": "pages/weather/weather",
+                "text": "看天气",
+                "iconPath": "/image/01.png",
+                "selectedIconPath": "/image/01.png"
+            },
+            {
                 "pagePath": "pages/myPage/myPage",
                 "text": "我的",
                 "iconPath": "/image/user.png",
                 "selectedIconPath": "/image/user_selected.png"
             }
         ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
     },
     "sitemapLocation": "sitemap.json"
 }

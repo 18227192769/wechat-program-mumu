@@ -8,18 +8,24 @@
     background-color: #fff;
     box-sizing: border-box;
     padding: 20rpx;
-    font-size: 32rpx;
+    font-size: 36rpx;
     margin-top: 10rpx;
     border-radius: 20rpx;
 }
 
 .city {
-    margin-top: 10rpx;
+    margin-top: 15rpx;
     border-radius: 10rpx;
 }
 
 .cityItem {
     padding: 10rpx;
+    padding-left: 50rpx;
+    margin: 20rpx 0;
     box-sizing: border-box;
     border-bottom: 2rpx solid rgb(189, 189, 189);
+}
+
+.active {
+    color: rgb(209, 209, 209);
 }

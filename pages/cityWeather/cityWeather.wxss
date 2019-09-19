@@ -1,15 +1,132 @@
 /* pages/cityWeather/cityWeather.wxss */
-.wrapper {
-    padding: 10rpx;
+page {
+    width: 100%;
+    height: 100%;
 }
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgb(92, 191, 221) 0%, #fff 50%, rgb(86, 188, 206)100%);
+    z-index: 1;
+}
+.mask .circleBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300rpx;
+    height: 300rpx;
+    /* border: 1rpx solid black; */
+}
+.mask .circleBox .rotateBox {
+    position: absolute;
+    width: 100rpx;
+    height: 100rpx;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* border: 1rpx solid black; */
+}
+
+.mask .circleBox .text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 100rpx;
+    color: rgb(78, 78, 78);
+    font-weight: 700;
+    font-size: 50rpx;
+    text-align: center;
+    line-height: 300rpx;
+}
+
+.mask .circleBox .rotateBox .item_box {  
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;  
+}
+.mask .circleBox .item_box:nth-of-type(1) {
+    background-color: rgba(255, 71, 71, .6);
+    transform-origin: 0 0;
+    animation: run 2s linear infinite;
+}
+.mask .circleBox .item_box:nth-of-type(2) {
+    background-color: rgba(255, 251, 40, .6);
+    animation: run1 1s linear infinite;
+    transform-origin: 100rpx 0;
+}
+.mask .circleBox .item_box:nth-of-type(3) {
+    transform-origin: 0 0;
+    animation: run2 1s linear infinite;
+    background-color: rgba(111, 255, 67, .6);
+}
+.mask .circleBox .item_box:nth-of-type(4) {
+    transform-origin: 0 100rpx;
+    animation: run3 2s linear infinite;
+    background-color: rgba(71, 249, 255, .6);
+}
+.mask .circleBox .item_box:nth-of-type(5) {
+    transform-origin: 100rpx 100rpx;
+    animation: run4 1s linear infinite;
+    background-color: rgba(255, 71, 240, .6);
+}
+@keyframes run {
+    from {
+        transform: rotate(0deg) scale(1.1)
+    }
+    to {
+        transform: rotate(360deg) scale(0.9)
+    }
+}
+@keyframes run1 {
+    from {
+        transform: rotate(0deg) scale(0.8)
+    }
+    to {
+        transform: rotate(360deg) scale(1.1)
+    }
+}
+@keyframes run2 {
+    from {
+        transform: rotate(0deg) scale(1.2)
+    }
+    to {
+        transform: rotate(360deg) scale(0.9)
+    }
+}
+@keyframes run3 {
+    from {
+        transform: rotate(0deg) scale(0.7)
+    }
+    to {
+        transform: rotate(360deg) scale(1)
+    }
+}
+@keyframes run4 {
+    from {
+        transform: rotate(0deg) scale(1.1)
+    }
+    to {
+        transform: rotate(360deg) scale(0.9)
+    }
+}
+
 .wrapper .weather {
     position: relative;
     width: 100%;
-    height: 1150rpx;
-    padding: 20rpx;
+    min-height: 100%;
+    background-image: linear-gradient(to top, rgba(71, 188, 218, .8) 0%, rgba(187, 228, 230, .8) 100%); 
+    padding: 30rpx;
     box-sizing: border-box;
     border-radius: 10rpx;
-    background-image: linear-gradient(to top, rgb(71, 188, 218) 0%, rgb(187, 228, 230) 100%); 
 }
 .temperature {
     position: absolute;
@@ -25,12 +142,13 @@
     box-shadow: 0 0 10rpx 0 rgb(234, 255, 116);
 }
 .GPS .local {
-    font-size: 60rpx;
+    font-size: 80rpx;
     color: #fff;
 }
 .GPS .time {
-    margin-left: 20rpx;
-    color: rgb(240, 240, 240);
+    margin-top: 20rpx;
+    color: rgb(87, 87, 87);
+    font-weight: 700;
 }
 
 .ganmao {
@@ -38,7 +156,7 @@
     margin: 20rpx 0;
     font-size: 26rpx;
     color: rgb(61, 61, 61);
-    margin-top: 50rpx;
+    margin: 40rpx 0;
 }
 .ganmao .title {
     color: rgb(246, 253, 188)
@@ -46,25 +164,57 @@
 
 .selectBox {
     display: flex;
+    margin-top: 20rpx;
 }
 .selectBox button {
-    width: 250rpx;
+    width: 200rpx;
     height: 50rpx;
     line-height: 50rpx;
     font-size: 30rpx;
     background-color: rgb(250, 255, 255);
 }
 
+.weather_chart {
+    /* height: 500rpx; */
+}
+
+.weather_chart .curCity_air {
+    padding: 20rpx;
+    font-size: 26rpx;
+}
+
+.weather_chart .curCity_air .air_item {
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 15rpx 0;
+    box-sizing: border-box;
+    padding-left: 20rpx;
+    box-shadow: 0 0 5rpx 0 rgb(110, 110, 110);
+    font-weight: 700;
+    color: rgb(85, 85, 85);
+}
+.weather_chart .chart {
+    height: 600rpx;
+}
 
 .futureDay_item {
-    padding: 5rpx;
+    padding: 10rpx;
     border: 3rpx solid rgb(221, 221, 221);
     border-radius: 10rpx;
     margin-top: 10rpx;
 }
+
+.futureDay_item .title {
+    font-size: 26rpx;
+}
+
 .futureDay_item .info {
     font-size: 26rpx;
-    margin-left: 30rpx;
+    margin-left: 50rpx;
+    margin-top: 5rpx;
 }
 
 .yesterday {
@@ -73,13 +223,21 @@
     border-radius: 10rpx;
     margin-top: 10rpx;
 }
+.yesterday .title {
+    font-size: 26rpx;
+}
 .yesterday .info {
     font-size: 26rpx;
     margin-left: 30rpx;
     margin-top: 10rpx;
     padding: 10rpx;
     border-radius: 20rpx;
-    background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(230, 230, 230) 100%);
+    background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(215, 234, 240) 100%);
     background-color: rgb(255, 255, 255);
     box-sizing: border-box
+}
+
+.selectBox button.active {
+    background-color: rgb(83, 177, 214);
+    color: #fff;
 }

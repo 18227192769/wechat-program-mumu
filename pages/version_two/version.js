@@ -52,7 +52,7 @@ Page({
                 })
             },
             fail: (res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.errMsg === 'scanCode:fail') {
                     wx.showToast({
                         title: '扫描二维码失败, 请确定图片类型',
@@ -114,7 +114,7 @@ Page({
             },
             success: (res) => {
                 const shippers = res.data.data.Shippers;
-                console.log(shippers);
+                // console.log(shippers);
                 if (shippers != undefined && shippers.length === 0) {
                     wx.showModal({
                         title: '提示框',
@@ -122,6 +122,7 @@ Page({
                     })
                     return;
                 }
+                // 获取快递公司编号
                 const expressID = shippers[0].ShipperCode;
                 const comList = this.data.comList.slice();
                 // 请求物流信息
@@ -141,7 +142,7 @@ Page({
             }
         })
     },
-    // 发送get请求
+    // 封装wx.request，发送get请求
     sendRequest (data) {
         return new Promise ((resolve, reject) => {
             wx.request({
@@ -172,7 +173,7 @@ Page({
                         content: '未查询到物流信息'
                     })
                 } else {
-                    console.log(traces);
+                    // console.log(traces);
                     this.setData({
                         traces
                     })

@@ -1,29 +1,44 @@
 <view class="container">
+    <!-- 头像区 -->
     <view class="wrapper">
         <view class="comImg">
+            <!-- 头像 -->
             <image src="{{ userImage }}" />
         </view>
+        <!-- 标语 -->
         <text class="title">{{ title }}</text>
     </view>
+    <!-- 搜索模块 -->
     <view class="search_module">
+        <!-- 输入模块 -->
         <view class="searchInpBox">
+            <!-- 输入框 -->
             <input type="text" 
                    placeholder="请输入快递单号" 
                    class="searchInp"
                    bind:change="setOderID" 
                    value="{{ oderID }}" />
+            <!-- 扫描二维码按钮 -->
             <image class="scanCode" src="/image/scanCode.png" bind:tap="getScanCode" />
         </view>
+        <!-- 搜索按钮 -->
         <button bind:tap="alertInfo" class="searchBtn" bind:tap="getData">查询</button>
     </view>
+    <!-- 快递公司显示区 -->
     <view class="curExpress">
+        <!-- 快递公司图标 -->
         <image src="{{ curExpress.comImg }}" />
+        <!-- 快递公司名字 -->
         <text>{{ curExpress.name }}</text>
     </view>
+    <!-- 物流信息显示区 -->
     <view class="traces_view">
         <view wx:for="{{ traces }}" wx:key="{{ index }}" class="traces_item">
+            <!-- 物流信息图标 -->
             <icon type="success" size="12" />
+            <!-- 物流信息 -->
             <text >{{ item.AcceptStation }}</text>
+            <!-- 物流时间 -->
             <text >{{ item.AcceptTime }}</text>
         </view>
     </view>

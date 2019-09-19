@@ -38,7 +38,7 @@ Page({
             { id: "province30", name: "浙江", open: false, citys: ["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水"] },
             { id: "province31", name: "陕西", open: false, citys: ["西安", "宝鸡", "铜川", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛", "杨凌示范区"] }
         ],
-        index: null
+        lastIndex: null
     },
 
     /**
@@ -49,32 +49,34 @@ Page({
     },
 
     click_province (e) {
-        console.log(e);
+        // console.log(e);
         // 获取上一次点击的索引值
-        const lastIndex = this.data.index;
+        const lastIndex = this.data.lastIndex;
         // 获取当前点击的索引值
-        let index = e.target.dataset.index;
+        let curIndex = e.target.dataset.index;
         const list = this.data.list;
         // 判断是否点击过
         if (lastIndex !== null) {
             list[lastIndex].open = false;
         }
-        // 将当前点击项的open值设置为 true -- 打开省份栏
-        if (lastIndex === index) {
-            list[index].open = false;
-            index = null;
+        // 如果当前点击项和上次相同，则收起省份栏，并将上次的点击项的索引置空
+        if (lastIndex === curIndex) {
+            list[curIndex].open = false;
+            curIndex = null;
         } else {
-            list[index].open = true;
+            // 将当前点击项的open值设置为 true -- 打开省份栏
+            list[curIndex].open = true;
         }
         this.setData({
             list,
-            index
+            lastIndex: curIndex
         })
     },
+    // 跳转到城市的天气页面
     toCityPage (e) {
         const city = e.target.dataset.city;
-        console.log(city);
-        wx.redirectTo({
+        // console.log(city);
+        wx.navigateTo({
             url: '../cityWeather/cityWeather?city=' + city
         });
     },

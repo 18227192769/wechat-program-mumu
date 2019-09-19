@@ -1,29 +1,67 @@
 <view class="wrapper">
-    <view class="weather">
-        <view class="temperature">{{ cityWeatherInfo.wendu ? cityWeatherInfo.wendu + "℃" : 0 + "℃" }} </view>
-        <view class="GPS">
-            <text class="local" bind:tap="selectCity">{{ curCity ? curCity : "地点" }}</text>
-            <text class="time">{{ time }}</text>
+    <!-- 加载数据时显示遮罩层 -->
+    <view class="mask" wx:if="{{ loading }}">
+        <view class="circleBox">
+            <view class="rotateBox">
+                <view class="item_box"></view>
+                <view class="item_box"></view>
+                <view class="item_box"></view>
+                <view class="item_box"></view>
+                <view class="item_box"></view>
+            </view>
+            <view class="text">Loading...</view>
         </view>
+    </view>
+    <view class="weather">
+        <!-- 温度显示区 - 绝对定位 -->
+        <view class="temperature">{{ cityWeatherInfo.wendu ? cityWeatherInfo.wendu + "℃" : 0 + "℃" }} </view>
+        <!-- 地理位置(点击跳转城市页面) & 实时时间显示区 -->
+        <view class="GPS">
+            <view class="local" bind:tap="selectCity">{{ curCity ? curCity : "地点" }}</view>
+            <view class="time">{{ time }}</view>
+        </view>
+        <!-- 温馨提示区 -->
         <view class="ganmao">
             <text class="title">温馨提示：</text>
             <text>{{ cityWeatherInfo.ganmao }}</text> 
         </view>
+        <!-- 选择区：默认显示近期天气，可以选择查看昨天的天气 -->
         <view class="selectBox">
-            <button bind:tap="selectFuture">未来5天</button>
-            <button bind:tap="selectYesterday">上一天</button>
+            <button bind:tap="selectForecast" class="{{ selectStatus === 0 ? 'active' : '' }}">空气质量</button>
+            <button bind:tap="selectFuture" class="{{ selectStatus === 1 ? 'active' : '' }}">近期天气</button>
+            <button bind:tap="selectYesterday" class="{{ selectStatus === 2 ? 'active' : '' }}">昨天</button>
         </view>
+        <!-- 天气显示区 - 通过 selectStatus 控制 -->
         <view class="futureDay">
-            <view wx:if="{{ selectStatus }}"
+            <view hidden="{{ selectStatus !== 0 }}"
+                  class="weather_chart">
+                <view class="curCity_air">
+                    <view class="air_item">AQI：{{ air_now_city.aqi }}</view>
+                    <view class="air_item">空气质量： {{ air_now_city.qlty }}</view>
+                    <view class="air_item">主要污染物：{{ air_now_city.main }}</view>
+                    <view class="air_item">pm10：{{ air_now_city.pm10 }} 毫克/立方米</view>
+                    <view class="air_item">pm25：{{ air_now_city.pm25 }} 毫克/立方米</view>
+                </view>
+                <!-- 显示实时天气曲线图 -->
+                <view class="chart">
+                    <ec-canvas ec="{{ ecObj }}"></ec-canvas>
+                </view>
+            </view>
+            <!-- 近期天气显示区 -->
+            <view wx:if="{{ selectStatus === 1 }}"
                   class="futureDay_item"
                   wx:for="{{ cityWeatherInfo.forecast }}"
                   wx:key="{{ index }}">
                 <view class="title">{{ item.date }}</view>
+                <view class="info">
+                    <text>{{ "天气：" + item.type }}</text>
+                </view>
                 <view class="info">{{ "温度：" + item.low + " ~ " + item.high }}</view>
                 <view class="info">{{ "风力：" + item.fengli }}</view>
                 <view class="info">{{ "风向：" + item.fengxiang }}</view>
-            </view>  
-            <view wx:if="{{ !selectStatus }}"
+            </view> 
+             <!-- 昨天天气显示区 -->
+            <view wx:if="{{ selectStatus === 2 }}"
                   class="yesterday">
                 <view class="title">{{ cityWeatherInfo.yesterday.date + " " + cityWeatherInfo.yesterday.type }}</view>
                 <view class="info">{{ "风力：" + cityWeatherInfo.yesterday.fl }}</view>
@@ -31,5 +69,6 @@
                 <view class="info">{{ "温度：" + cityWeatherInfo.yesterday.low + " ~ " + cityWeatherInfo.yesterday.high }}</view>      
             </view>  
         </view>
+        <!-- <view bind:tap="getLocation">获取地理位置</view> -->
     </view>
 </view>
